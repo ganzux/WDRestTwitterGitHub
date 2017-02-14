@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WorkDay researcher</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/css/style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<h1>Results</h1>
+    <p th:text="'id: ' + ${data.id}" />
+    <p th:text="'content: ' + ${data.content}" />
+    <p th:text="'Projects: ' + ${data.numberProjects}" />
+    <a href="/">Go again!</a>
+</body>
+</html>
