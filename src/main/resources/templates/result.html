@@ -7,9 +7,30 @@
 </head>
 <body>
 	<h1>Results</h1>
-    <p th:text="'id: ' + ${data.id}" />
-    <p th:text="'content: ' + ${data.content}" />
+
+	<div class="alert" th:if="${data.error != null}">
+		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+		<p th:text="${data.error}" />
+	</div>
+
+<!--     <p th:text="'id: ' + ${data.id}" /> -->
+    <p th:text="'query: ' + ${data.content}" />
     <p th:text="'Projects: ' + ${data.numberProjects}" />
+
+    <span th:each="project : ${data.projects}">
+    	<p th:text="'Name: ' + ${project.name}" />
+    	<p th:text="'Desc: ' + ${project.description}" />
+    	<p th:text="'Twee: ' + ${#lists.size(project.tweetsList)}" />
+    	<table>
+			<tbody>
+				<tr th:each="tweet : ${project.tweetsList}">
+		      	  	<td th:text="${tweet[0]}"></td>
+					<td th:text="${tweet[1]}"></td>
+				</tr>
+			</tbody>
+		</table>
+    </span>
+
     <a href="/">Go again!</a>
 </body>
 </html>

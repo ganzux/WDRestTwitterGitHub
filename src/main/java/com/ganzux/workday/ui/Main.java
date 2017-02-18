@@ -1,27 +1,40 @@
 package com.ganzux.workday.ui;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 /**
  * Main class
  * @author ganzux
  */
-//@ComponentScan
-//@RestController
-//@EnableAutoConfiguration
+@PropertySource("classpath:config.properties")
 @SpringBootApplication
 public class Main {
+	///////////////////////////////////////////////////////////////
+	//                        Attributes                         //
+	///////////////////////////////////////////////////////////////
+	private static Log log = LogFactory.getLog(Main.class);
+	///////////////////////////////////////////////////////////////
+	//                        /Attributes                        //
+	///////////////////////////////////////////////////////////////
 
+
+
+	///////////////////////////////////////////////////////////////
+	//                       Public Methods                      //
+	///////////////////////////////////////////////////////////////
 	/**
 	 * Main method to run the App
 	 * @param args
 	 */
     public static void main(String[] args) {
+    	log.debug("Init Main...");
         SpringApplication.run(Main.class, args);
     }
     
@@ -45,11 +58,7 @@ public class Main {
             }
         };
     }
-    
-    // properties file
-    @Bean 
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-    	return new PropertySourcesPlaceholderConfigurer();
-    }
-
+	///////////////////////////////////////////////////////////////
+	//                      /Public Methods                      //
+	///////////////////////////////////////////////////////////////
 }

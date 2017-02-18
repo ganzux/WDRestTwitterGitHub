@@ -23,6 +23,9 @@ public class AppConfig {
 	@Value("${app.github.api.endpoint}")
 	private String githubEndPoint;
 	
+	@Value("${app.projects.max}")
+	private  int maxProjects;
+	
 	@Value("${app.twitter.app.only.authentication}")
 	private String authentication;
 
@@ -40,6 +43,13 @@ public class AppConfig {
 
 	@Value("${app.twitter.consumer.secret}")
 	private  String consumerSecret;
+	
+	@Value("${app.twitter.access.token.key}")
+	private String accessTokenKey;
+
+	@Value("${app.twitter.access.token.secret}")
+	private  String accessTokenSecret;
+
 	///////////////////////////////////////////////////////////////
 	//                        /Attributes                        //
 	///////////////////////////////////////////////////////////////
@@ -52,7 +62,7 @@ public class AppConfig {
 	@Bean
 	public GitHubRestController getGitHubRestController() {
 		log.info("Register GitHubRestController...");
-		GitHubRestController ghrc = new GitHubRestController(githubEndPoint);
+		GitHubRestController ghrc = new GitHubRestController(githubEndPoint, maxProjects);
 		log.info("Register GitHubRestController OK");
 		return ghrc;
 	}
@@ -61,7 +71,8 @@ public class AppConfig {
 	public TwitteRestController getTwitterRestController() {
 		log.info("Register TwitteRestController...");
 		TwitteRestController ghrc = new TwitteRestController(githubEndPoint,
-				requestToken, authorizeUrl, accessToken, consumerKey, consumerSecret);
+				requestToken, authorizeUrl, accessToken, consumerKey, consumerSecret,
+				accessTokenKey, accessTokenSecret);
 		log.info("Register TwitteRestController OK");
 		return ghrc;
 	}

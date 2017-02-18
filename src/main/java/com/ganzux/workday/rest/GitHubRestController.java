@@ -1,14 +1,14 @@
 package com.ganzux.workday.rest;
 
-import java.util.Map;
+import java.util.Iterator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
-
 import com.ganzux.workday.pojo.GitHubPojo;
+import com.ganzux.workday.pojo.Item;
+import com.ganzux.workday.rest.exception.ConnectionException;
 
 @ComponentScan
 public class GitHubRestController {
@@ -16,9 +16,9 @@ public class GitHubRestController {
 	//                        Attributes                         //
 	///////////////////////////////////////////////////////////////
 	private static Log log = LogFactory.getLog(GitHubRestController.class);
-	
-	@Value("${app.github.api.endpoint}")
-	private static String githubEndPoint = "https://api.github.com/search/repositories?q="; // FIXME
+
+	private String githubEndPoint;
+	private int maxProjects;
 	///////////////////////////////////////////////////////////////
 	//                        /Attributes                        //
 	///////////////////////////////////////////////////////////////
@@ -28,19 +28,54 @@ public class GitHubRestController {
 	///////////////////////////////////////////////////////////////
 	//                       Public Methods                      //
 	///////////////////////////////////////////////////////////////
-	public static GitHubPojo getData(String query){
-		RestTemplate restTemplate = new RestTemplate();
-		
-		String callId = System.currentTimeMillis() + "_node1";
-		
-		String finalEndPoint = githubEndPoint + query;
-		
-		log.debug(finalEndPoint);
-
-		Object response = 
-				restTemplate.getForObject(finalEndPoint, GitHubPojo.class);
-		GitHubPojo responseJSonMapped = (GitHubPojo) response;
-
-		return responseJSonMapped;
+	public GitHubRestController(String githubEndPoint, int maxProjects){
+		this.githubEndPoint = githubEndPoint;
+		this.maxProjects = maxProjects;
 	}
+
+	public GitHubPojo getData(String query) throws ConnectionException{
+		log.debug(query);
+
+		try{
+			RestTemplate restTemplate = new RestTemplate();
+			
+			String callId = System.currentTimeMillis() + "_node1";
+			
+			String finalEndPoint = githubEndPoint + query;
+	
+			log.info(finalEndPoint + "-" + callId);
+	
+			Object response = 
+					restTemplate.getForObject(finalEndPoint, GitHubPojo.class);
+			GitHubPojo responseJSonMapped = (GitHubPojo) response;
+	
+			log.debug(responseJSonMapped);
+	
+			int count = 0;
+			if (responseJSonMapped != null && responseJSonMapped.getTotalCount() != null 
+					&& responseJSonMapped.getTotalCount() > 0){
+				Iterator<Item> it = responseJSonMapped.getItems().iterator();
+				 
+			    while(it.hasNext()) {
+			    	it.next();
+			    	if (count >= 10){
+			    		it.remove();
+			    	}
+			    	count ++;
+			    }
+			    responseJSonMapped.setTotalCount(responseJSonMapped.getItems().size());
+			}
+			
+			log.debug(responseJSonMapped);
+			
+			return responseJSonMapped;
+		} catch (Exception e){
+			log.error("Error connection with GitHub REST Service." + e.getMessage());
+			throw new ConnectionException("Error connection with GitHub REST Service.", e);
+		}
+	}
+	///////////////////////////////////////////////////////////////
+	//                      /Public Methods                      //
+	///////////////////////////////////////////////////////////////
+
 }
