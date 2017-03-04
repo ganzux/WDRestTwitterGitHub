@@ -1,4 +1,4 @@
-package com.ganzux.workday.ui;
+package com.ganzux.wd.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.ganzux.workday.pojo.GitHubPojo;
-import com.ganzux.workday.pojo.Item;
-import com.ganzux.workday.rest.GitHubRestController;
-import com.ganzux.workday.rest.TwitteRestController;
-import com.ganzux.workday.rest.exception.ConnectionException;
-import com.ganzux.workday.ui.pojo.Data;
-import com.ganzux.workday.ui.pojo.Project;
+import com.ganzux.wd.pojo.GitHubPojo;
+import com.ganzux.wd.pojo.Item;
+import com.ganzux.wd.rest.GitHubRestController;
+import com.ganzux.wd.rest.TwitteRestController;
+import com.ganzux.wd.rest.exception.ConnectionException;
+import com.ganzux.wd.ui.pojo.Data;
+import com.ganzux.wd.ui.pojo.Project;
 
 @ComponentScan
 @Controller

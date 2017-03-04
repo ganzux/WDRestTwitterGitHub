@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.ganzux</groupId>
-  <artifactId>workday</artifactId>
+  <artifactId>WD</artifactId>
   <version>1</version>
   <packaging>jar</packaging>
 
-  <name>Workday</name>
+  <name>WD</name>
   <url>http://maven.apache.org</url>
   <description>Create a simple command line (ascii text) API mashup of GitHub and Twitter APIs. Search
 for "Reactive" projects on GitHub, then for each project search for tweets that mention it.
@@ -17,7 +17,7 @@ format.
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<start-class>com.ganzux.workday.ui.Main</start-class>
+	<start-class>com.ganzux.wd.ui.Main</start-class>
 	<java.version>1.8</java.version>
   </properties>
   

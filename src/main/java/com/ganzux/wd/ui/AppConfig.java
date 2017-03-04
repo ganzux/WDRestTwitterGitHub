@@ -1,4 +1,4 @@
-package com.ganzux.workday.ui;
+package com.ganzux.wd.ui;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
-import com.ganzux.workday.rest.GitHubRestController;
-import com.ganzux.workday.rest.TwitteRestController;
+import com.ganzux.wd.rest.GitHubRestController;
+import com.ganzux.wd.rest.TwitteRestController;
 
 
 @Configuration

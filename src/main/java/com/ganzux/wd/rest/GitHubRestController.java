@@ -1,4 +1,4 @@
-package com.ganzux.workday.rest;
+package com.ganzux.wd.rest;
 
 import java.util.Iterator;
 
@@ -6,9 +6,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
-import com.ganzux.workday.pojo.GitHubPojo;
-import com.ganzux.workday.pojo.Item;
-import com.ganzux.workday.rest.exception.ConnectionException;
+
+import com.ganzux.wd.pojo.GitHubPojo;
+import com.ganzux.wd.pojo.Item;
+import com.ganzux.wd.rest.exception.ConnectionException;
 
 @ComponentScan
 public class GitHubRestController {

@@ -1,4 +1,4 @@
-package com.ganzux.workday;
+package com.ganzux.wd;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

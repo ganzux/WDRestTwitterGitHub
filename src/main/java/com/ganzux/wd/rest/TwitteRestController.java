@@ -1,4 +1,4 @@
-package com.ganzux.workday.rest;
+package com.ganzux.wd.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.ganzux.workday.rest.exception.ConnectionException;
+import com.ganzux.wd.rest.exception.ConnectionException;
 
 import twitter4j.Query;
 import twitter4j.QueryResult;

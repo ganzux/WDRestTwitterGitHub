@@ -1,9 +1,9 @@
-package com.ganzux.workday.ui.pojo;
+package com.ganzux.wd.ui.pojo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ganzux.workday.pojo.Item;
+import com.ganzux.wd.pojo.Item;
 
 public class Project {
 

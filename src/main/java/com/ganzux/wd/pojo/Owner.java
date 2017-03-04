@@ -1,5 +1,5 @@
 
-package com.ganzux.workday.pojo;
+package com.ganzux.wd.pojo;
 
 import java.util.HashMap;
 import java.util.Map;

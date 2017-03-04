@@ -1,4 +1,4 @@
-package com.ganzux.workday.rest.exception;
+package com.ganzux.wd.rest.exception;
 
 public class ConnectionException extends Exception{
 
